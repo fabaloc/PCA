@@ -1,5 +1,3 @@
-# PCA
-Experimenting with Principal Components Analysis:
 
 # PCA step by step 
 The py file 'PCAstepbystep' is for (personal) pedagogical goals and shows all the steps that need to be followed to do a Principal Component Analysis. The method used is the eigendecomposition of the covariance matrix. Alternatively Singular Value Decomposition could be used to reach similar results.
