@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
-
-'''                   PRINCIPAL COMPONENT ANALYSIS                 '''
+'''                                             PRINCIPAL COMPONENT ANALYSIS                                                  '''
 
 
 import numpy as np
@@ -18,7 +15,7 @@ import matplotlib.pyplot as plt
 import os
 cwd = os.getcwd()
  
-df = pd.read_excel(r'/Users/albertociccone/Desktop/Credit/Itraxxdata_22Mar19_04Jun19.xlsx',  sheet_name='Itraxx')
+df = pd.read_excel(r'~/Itraxxdata_22Mar19_04Jun19.xlsx',  sheet_name='Itraxx')
 
 
 # Explore dataset
@@ -84,7 +81,7 @@ d = diff_df.mul(multiplier, axis=0)
 summary = d.describe()
 
 
-'''                          Rolling PCA                   '''
+'''                                                             Rolling PCA                                                   '''
 
 n, m = d.shape
 t = 20
@@ -192,10 +189,10 @@ R.columns = d.columns
 
 from openpyxl import load_workbook
  
-PCA_ItraxxMain = df.to_excel(r'C:\Users\aciccone\Desktop\Credit\Results\PCA_ItraxxMain.xlsx',
+PCA_ItraxxMain = df.to_excel(r'~\PCA_ItraxxMain.xlsx',
                                     index = True , header = True, sheet_name='Original_Data')
 
-path = r'C:\Users\aciccone\Desktop\Credit\Results\PCA_S31Main.xlsx'
+path = r'~\PCA_ItraxxMain.xlsx'
 book = load_workbook(path)
 writer = pd.ExcelWriter(path, engine='openpyxl')
 writer.book = book
@@ -211,10 +208,12 @@ writer.save()
 # Visualization
 
 #1 Shape of coeffiecients for the most recent day and all tenors
+
 plt.plot(coeff1.iloc[0,:], label='PC1')  
 plt.plot(coeff2.iloc[0,:], label='PC2')
 plt.plot(coeff3.iloc[0,:], label='PC3')
 plt.legend()
+
 
 #2 Shape of coefficents for S31, the most liquid index
 
@@ -230,7 +229,6 @@ plt.plot(coeff1_s31.iloc[0,:], label='PC1')
 plt.plot(coeff2_s31.iloc[0,:], label='PC2')
 plt.plot(coeff3_s31.iloc[0,:], label='PC3')
 plt.legend()
-
 
 
 #2 Residuals for S31, the most liquid index
